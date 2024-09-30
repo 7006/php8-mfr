@@ -14,4 +14,4 @@ function freq_element($freq, $element)
     return $freq;
 }
 
-return array_reduce($arrays, freq_array(...), $freq);
+return array_reduce($arrays, freq_array(...), []);

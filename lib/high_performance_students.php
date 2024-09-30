@@ -1,6 +1,6 @@
 <?php
 
--define('HIGH_AVERAGE_SCORE', 90);
+define('HIGH_AVERAGE_SCORE', 90);
 
 $studentsJson = file_get_contents('data/students.json');
 $students = json_decode($studentsJson, true);

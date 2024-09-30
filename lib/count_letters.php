@@ -1,17 +1,18 @@
 <?php
 
-$dataJson = file_get_contents('data/letters.json');
-$arrays = json_decode($dataJson, true);
+$lettersJson = file_get_contents('data/letters.json');
+$letters = json_decode($lettersJson, true);
 
-function freq_array($freq, $array)
-{
-    return array_reduce($array, freq_element(...), $freq);
-}
+$freq = [];
 
-function freq_element($freq, $element)
-{
-    $freq[$element] = 1 + ($freq[$element] ?? 0);
-    return $freq;
-}
+$fn = function ($letter, $_) use (& $freq) {
+    if (isset($freq[$letter])) {
+        $freq[$letter] += 1;
+    } else {
+        $freq[$letter] = 1;
+    }
+};
 
-return array_reduce($arrays, freq_array(...), []);
+array_walk_recursive($letters, $fn);
+
+return $freq;

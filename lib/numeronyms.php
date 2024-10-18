@@ -6,7 +6,8 @@ $words = preg_split('/\s+/', INPUT, -1, PREG_SPLIT_NO_EMPTY);
 
 function numeronym($word)
 {
-    return strlen($word) < 4
+    $len = strlen($word),
+    return $len < 4
         ? $word
         : $word[0] . ($len - 2) . $word[$len - 1];
 }
